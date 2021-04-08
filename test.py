@@ -23,20 +23,20 @@ conv_1 = np.vectorize(conv_1)
 conv_2 = np.vectorize(conv_2)
 
 ser = serial.Serial('/dev/ttyUSB15', baudrate=115200)
+data = -100*np.sin(np.linspace(0,20,30))
+data = data.astype(int)
+data = conv_1(data)
 
-data=np.loadtxt('DATA/in_data.txt').astype(int)
-data=conv_1(data)
-out_data =[] 
-
-for i in tqdm(data):
-    #print(i)    
+out = []
+for i in (data):
+    print(i)        
     ser.write(chr(i))
 
     sleep(0.01)
         
     d = ser.read()
-    out_data.append(ord(d))
+    out.append(ord(d))
 
-out_data=conv_2(np.array(out_data))
-np.savetxt('DATA/out_data_fixed.txt',out_data)
-ser.close()
+out=conv_2(np.array(out))
+
+print(out)
