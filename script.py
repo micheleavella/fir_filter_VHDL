@@ -24,7 +24,7 @@ conv_2 = np.vectorize(conv_2)
 
 ser = serial.Serial('/dev/ttyUSB15', baudrate=115200)
 
-data=np.loadtxt('DATA/in_data.txt').astype(int)
+data=np.loadtxt('DATA/in_quadra.txt').astype(int)
 data=conv_1(data)
 out_data =[] 
 
@@ -38,5 +38,5 @@ for i in tqdm(data):
     out_data.append(ord(d))
 
 out_data=conv_2(np.array(out_data))
-np.savetxt('DATA/out_data_fixed.txt',out_data)
+np.savetxt('DATA/out_quadra.txt',out_data)
 ser.close()
