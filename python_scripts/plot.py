@@ -1,8 +1,10 @@
 import numpy as np
 import plotly.graph_objects as go
 
-x=np.loadtxt('DATA/in_data.txt')
-y=np.loadtxt('DATA/out_data_fixed.txt')
+#x=np.loadtxt('DATA/in_data.txt')
+x=np.loadtxt('DATA/in_quadra.txt')
+#y=np.loadtxt('DATA/out_data_fixed.txt')
+y=np.loadtxt('DATA/out_quadra.txt')
 n=np.arange(len(x))
 
 
@@ -16,5 +18,5 @@ fig.add_trace(go.Scatter(x=n, y=y,
                     name='out signal'))
 
 
-fig.write_image("plot.jpeg")
+fig.write_image("quadra.jpeg")
 fig.show()
